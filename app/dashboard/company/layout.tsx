@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar"
 import { ReactNode } from "react"
 
-const DashboardLayout = ({
+const CompanyLayout = ({
     children
 }: {
     children: ReactNode
@@ -14,4 +14,4 @@ const DashboardLayout = ({
     )
 }
 
-export default DashboardLayout
+export default CompanyLayout
