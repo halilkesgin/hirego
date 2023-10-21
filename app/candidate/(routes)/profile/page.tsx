@@ -1,4 +1,6 @@
+import Cv from "./_components/cv"
 import General from "./_components/general"
+import Links from "./_components/links"
 
 const CandidateProfilePage = () => {
     return (
@@ -9,6 +11,8 @@ const CandidateProfilePage = () => {
                     <span className="text-sm font-medium text-muted-foreground/75">Stand out against other candidates. Enrich your applications with your HIREGO profile.</span>
                 </div>
                 <General />
+                <Cv />
+                <Links />
             </div>
         </div>
     )

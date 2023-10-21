@@ -8,7 +8,6 @@ import {
     Plus 
 } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
 
 import { 
     Card, 
@@ -16,10 +15,20 @@ import {
     CardHeader, 
     CardTitle 
 } from "@/components/ui/card"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { 
+    Collapsible, 
+    CollapsibleContent, 
+    CollapsibleTrigger 
+} from "@/components/ui/collapsible"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { 
+    Select, 
+    SelectContent, 
+    SelectItem, 
+    SelectTrigger, 
+    SelectValue 
+} from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 
 const General = () => {
@@ -114,10 +123,12 @@ const General = () => {
                             </div>
                         </div>
                         <div className="flex gap-x-3 justify-end">
-                            <Button variant="outline">
-                                Cancel
-                            </Button>
-                            <Button variant="secondary">
+                            <CollapsibleTrigger asChild>
+                                <Button variant="outline">
+                                    Cancel
+                                </Button>
+                            </CollapsibleTrigger>
+                            <Button disabled variant="secondary">
                                 Save changes
                             </Button>
                         </div>
