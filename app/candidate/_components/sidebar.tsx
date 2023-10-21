@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import Privacy from "@/data/privacy"
 
 const routes = [
     {
@@ -62,10 +61,10 @@ const Sidebar = () => {
                             key={route.href}
                             href={route.href}
                             className={cn(
-                                " group flex p-3 w-full justify-start font-semibold cursor-pointer hover:bg-white/10 rounded-lg transition",
-                                pathname === route.href ? "text-blue-600 dark:text-white bg-white/10" : "text-blue-600",
-                                pathname === route.href ? "bg-blue-100 hover:bg-blue-100" : "hover:text-blue-600",
-                                pathname !== route.href ? "text-muted-foreground hover:text-muted-foreground/60" : ""
+                                " group flex p-3 w-full justify-start font-semibold cursor-pointer hover:bg-blue-100 hover:dark:bg-muted rounded-lg transition",
+                                pathname === route.href ? "text-blue-600 dark:text-white" : "text-blue-600",
+                                pathname === route.href ? "bg-blue-100 dark:bg-muted hover:bg-blue-100" : "hover:text-blue-600",
+                                pathname !== route.href ? "text-muted-foreground hover:text-muted-foreground/60 dark:hover:text-white" : ""
                             )}
                         >
                             <div className="flex items-center flex-1 ">
@@ -78,10 +77,10 @@ const Sidebar = () => {
                         </Link>
                     ))}
                 </div>
-                <div className="fixed text-black flex flex-col justify-center items-start bottom-0 py-5 px-3">
+                <div className="fixed flex flex-col justify-center items-start bottom-0 py-5 px-3">
                     <Dialog>
                         <DialogTrigger>
-                            Privacy
+                            <span className="text-black dark:text-white">Privacy</span>
                         </DialogTrigger>
                         <DialogContent className="!max-w-[1250px]">
                             <DialogHeader>
@@ -98,7 +97,7 @@ const Sidebar = () => {
                     </Dialog>
                     <Dialog>
                         <DialogTrigger>
-                            Terms & Conditions
+                            <span className="text-black dark:text-white">Terms & Conditions</span>
                         </DialogTrigger>
                         <DialogContent className="!max-w-[1250px]">
                             <DialogHeader>

@@ -39,10 +39,10 @@ const ProfileToggle = ({
                         <Avatar className="rounded-md">
                             <AvatarImage src="https://github.com/shadcn.png" />
                         </Avatar>
-                        <span className="text-[15px] font-medium text-muted-foreground">
+                        <span className="text-[15px] font-medium">
                             Halil Kesgin
                         </span>
-                        <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                        <ChevronDown className="h-5 w-5" />
                     </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-[250px] rounded-xl">
