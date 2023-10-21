@@ -1,21 +1,36 @@
 "use client"
 
+import { 
+    ChevronDown, 
+    LogOut, 
+    Moon,
+    Settings, 
+    User
+} from "lucide-react"
+import { useTheme } from "next-themes"
+
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
+    DropdownMenuPortal,
     DropdownMenuSeparator,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { ArrowDown, ChevronDown, LogOut, Settings, User } from "lucide-react"
 
 const ProfileToggle = ({
     className
 }: {
     className?: string
 }) => {
+
+    const { setTheme } = useTheme()
+
     return (
         <div className={className}>
             <DropdownMenu>
@@ -35,6 +50,25 @@ const ProfileToggle = ({
                         <User className="h-4 w-4 mr-2" />
                         Profile
                     </DropdownMenuItem>
+                    <DropdownMenuSub>
+                        <DropdownMenuSubTrigger>
+                            <Moon className="mr-2 h-4 w-4" />
+                            <span>Theme</span>
+                        </DropdownMenuSubTrigger>
+                        <DropdownMenuPortal>
+                            <DropdownMenuSubContent>
+                                <DropdownMenuItem onClick={() => setTheme("light")}>
+                                    Light
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                                    Dark
+                                </DropdownMenuItem>
+                                <DropdownMenuItem onClick={() => setTheme("system")}>
+                                    System
+                                </DropdownMenuItem>
+                            </DropdownMenuSubContent>
+                        </DropdownMenuPortal>
+                    </DropdownMenuSub>
                     <DropdownMenuItem className="cursor-pointer">
                         <Settings className="h-4 w-4 mr-2" />
                         Settings

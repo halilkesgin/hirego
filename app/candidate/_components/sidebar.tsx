@@ -1,35 +1,43 @@
 "use client"
 
-import { Home, LayoutDashboard, MessageSquare, Settings, User } from "lucide-react"
+import { 
+    LayoutDashboard, 
+    MessageSquare, 
+    Settings, 
+    User 
+} from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import Privacy from "@/data/privacy"
 
 const routes = [
     {
         label: "Dashboard",
-        icon: Home,
+        icon: LayoutDashboard,
         href: "/candidate",
-        color: "text-sky-500"
+        color: "text-blue-500"
     },
     {
         label: "Messages",
         icon: MessageSquare,
         href: "/candidate/messages",
-        color: "text-sky-500"
+        color: "text-blue-500"
     },
     {
         label: "Profile",
         icon: User,
         href: "/candidate/profile",
-        color: "text-sky-500"
+        color: "text-blue-500"
     },
     {
         label: "Settings",
         icon: Settings,
         href: "/candidate/settings",
-        color: "text-sky-500"
+        color: "text-blue-500"
     }
 ]
 
@@ -54,17 +62,58 @@ const Sidebar = () => {
                             key={route.href}
                             href={route.href}
                             className={cn(
-                                " group flex p-3 w-full justify-start font-semibold cursor-pointer hover:text-muted-foreground hover:bg-white/10 rounded-lg transition",
-                                pathname === route.href ? "text-black dark:text-white bg-white/10" : "text-zinc-400"
+                                " group flex p-3 w-full justify-start font-semibold cursor-pointer hover:bg-white/10 rounded-lg transition",
+                                pathname === route.href ? "text-blue-600 dark:text-white bg-white/10" : "text-blue-600",
+                                pathname === route.href ? "bg-blue-100 hover:bg-blue-100" : "hover:text-blue-600",
+                                pathname !== route.href ? "text-muted-foreground hover:text-muted-foreground/60" : ""
                             )}
                         >
-                            <div className="flex items-center flex-1">
-                                <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
+                            <div className="flex items-center flex-1 ">
+                                <route.icon className={cn(
+                                    "h-5 w-5 mr-3",
+                                    pathname !== route.href ? "text-muted-foreground" : "",
+                                )} />
                                 {route.label}
                             </div>
                         </Link>
                     ))}
-                </div>  
+                </div>
+                <div className="fixed text-black flex flex-col justify-center items-start bottom-0 py-5 px-3">
+                    <Dialog>
+                        <DialogTrigger>
+                            Privacy
+                        </DialogTrigger>
+                        <DialogContent className="!max-w-[1250px]">
+                            <DialogHeader>
+                                <DialogTitle>
+                                    Privacy
+                                </DialogTitle>
+                            </DialogHeader>
+                            <ScrollArea className="h-100">
+                                <span>
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum maiores odio eligendi sint rem quidem iusto. Quos ipsam consectetur aliquid?
+                                </span>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+                    <Dialog>
+                        <DialogTrigger>
+                            Terms & Conditions
+                        </DialogTrigger>
+                        <DialogContent className="!max-w-[1250px]">
+                            <DialogHeader>
+                                <DialogTitle>
+                                    Terms & Conditions
+                                </DialogTitle>
+                            </DialogHeader>
+                            <ScrollArea className="h-100">
+                                <span>
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum maiores odio eligendi sint rem quidem iusto. Quos ipsam consectetur aliquid?
+                                </span>
+                            </ScrollArea>
+                        </DialogContent>
+                    </Dialog>
+                </div>
             </div>
         </div>
     )

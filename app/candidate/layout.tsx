@@ -19,9 +19,6 @@ const CandidateLayout = ({
                 <div>
                     {children}
                 </div>
-                <div className="flex justify-center">
-                    <Footer />
-                </div>
             </main>
         </div>
     )
