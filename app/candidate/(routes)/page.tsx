@@ -1,9 +1,17 @@
+import { Card, CardContent } from "@/components/ui/card"
+import { DataTableDemo } from "../_components/table/test"
+
 const CandidatePage = () => {
     return (
         <div className="container mt-10">
-            <span className="text-4xl font-semibold">
-                You have no applications yet.
-            </span>
+            <div className="text-4xl !mb-10 font-semibold">
+                Your applications and status.
+            </div>
+            <Card>
+                <CardContent>
+                    <DataTableDemo />
+                </CardContent>
+            </Card>
         </div>
     )
 }

@@ -1,3 +1,4 @@
+import Delete from "./_components/delete"
 import Theme from "./_components/theme"
 
 const CandidateSettingsPage = () => {
@@ -10,6 +11,7 @@ const CandidateSettingsPage = () => {
                 </div>
                 <div className="flex flex-col gap-y-5 mb-10">
                     <Theme />
+                    <Delete />
                 </div>
             </div>
         </div>

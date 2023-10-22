@@ -8,13 +8,14 @@ import {
     User
 } from "lucide-react"
 import { useTheme } from "next-themes"
+import { useClerk } from "@clerk/clerk-react"
+import { useRouter } from "next/navigation"
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
     DropdownMenuPortal,
     DropdownMenuSeparator,
     DropdownMenuSub,
@@ -30,6 +31,8 @@ const ProfileToggle = ({
 }) => {
 
     const { setTheme } = useTheme()
+    const router = useRouter()
+    const { signOut } = useClerk()
 
     return (
         <div className={className}>
@@ -46,7 +49,7 @@ const ProfileToggle = ({
                     </div>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-[250px] rounded-xl">
-                    <DropdownMenuItem className="cursor-pointer">
+                    <DropdownMenuItem className="cursor-pointer" onClick={() => router.push("/candidate/profile")}>
                         <User className="h-4 w-4 mr-2" />
                         Profile
                     </DropdownMenuItem>
@@ -69,13 +72,13 @@ const ProfileToggle = ({
                             </DropdownMenuSubContent>
                         </DropdownMenuPortal>
                     </DropdownMenuSub>
-                    <DropdownMenuItem className="cursor-pointer">
+                    <DropdownMenuItem className="cursor-pointer" onClick={() => router.push("/candidate/settings")}>
                         <Settings className="h-4 w-4 mr-2" />
                         Settings
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer">
-                        <LogOut className="h-4 w-4 mr-2" />
+                    <DropdownMenuItem className="cursor-pointer" onClick={() => signOut(() => router.push("/"))}>
+                        <LogOut className="h-4 w-4 mr-2"  />
                         Sign out
                     </DropdownMenuItem>
                 </DropdownMenuContent>
