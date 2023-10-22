@@ -10,9 +10,11 @@ const CandidateProfilePage = () => {
                     <span className="text-xl font-semibold text-black/85">Candidate Profile</span>
                     <span className="text-sm font-medium text-muted-foreground/75">Stand out against other candidates. Enrich your applications with your HIREGO profile.</span>
                 </div>
-                <General />
-                <Cv />
-                <Links />
+                <div className="flex flex-col gap-y-5 mb-10">
+                    <General />
+                    <Cv />
+                    <Links />
+                </div>
             </div>
         </div>
     )
