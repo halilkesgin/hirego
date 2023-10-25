@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 import Navbar from "./_components/navbar"
 import Sidebar from "./_components/sidebar"
+import { SearchCommand } from "./_components/search-command"
 
 const CompanyLayout = ({
     children
@@ -15,6 +16,7 @@ const CompanyLayout = ({
             <main className="md:pl-72">
                 <Navbar />
                 <div>
+                    <SearchCommand />
                     {children}
                 </div>
             </main>

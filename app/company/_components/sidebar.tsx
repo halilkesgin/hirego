@@ -1,10 +1,14 @@
 "use client"
 
 import { 
+    Inbox,
+    Layers2,
     LayoutDashboard, 
     MessageSquare, 
+    Search, 
     Settings, 
-    User 
+    User, 
+    UserSquare2
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -12,48 +16,53 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Input } from "@/components/ui/input"
+import { SearchCommand } from "./search-command"
+import { useSearch } from "@/hooks/use-search"
+import { Button } from "@/components/ui/button"
 
 const routes = [
     {
         label: "Dashboard",
         icon: LayoutDashboard,
-        href: "/candidate",
+        href: "/company",
         color: "text-blue-500"
     },
     {
         label: "Jobs",
-        icon: MessageSquare,
-        href: "/candidate/messages",
+        icon: Layers2,
+        href: "/company/jobs",
         color: "text-blue-500"
     },
     {
         label: "Candidates",
-        icon: User,
-        href: "/candidate/profile",
+        icon: UserSquare2,
+        href: "/company/candidates",
         color: "text-blue-500"
     },
     {
         label: "Talent Pool",
-        icon: Settings,
-        href: "/candidate/settings",
+        icon: Inbox,
+        href: "/company/settings",
         color: "text-blue-500"
     },
     {
         label: "Messages",
-        icon: Settings,
-        href: "/candidate/settings",
+        icon: MessageSquare,
+        href: "/company/messages",
         color: "text-blue-500"
     },
     {
         label: "Settings",
         icon: Settings,
-        href: "/candidate/settings",
+        href: "/company/settings",
         color: "text-blue-500"
     }
 ]
 
 const Sidebar = () => {
     const pathname = usePathname()
+    const search = useSearch()
 
     return (
         <div className="space-y-4 py-4 flex flex-col h-full bg-white dark:bg-[#020817] text-white border-r ">
@@ -68,6 +77,15 @@ const Sidebar = () => {
                     </div>
                 </Link>
                 <div className="space-y-1">
+                    <Button variant="outline" onClick={search.onOpen} className="w-full mb-12 justify-between flex gap-x-2">
+                        <div className="flex gap-x-3">
+                            <Search className="h-5 w-5" />
+                            Search
+                        </div>
+                        <kbd className="ml-auto pinter-events-none inline-flex select-none items-center gap-1 rounded py-1 border bg-muted px-1.5 font-mono text-xs font-medium dark:bg-background text-muted-foreground opacity-100">
+                            <span className="text-xs">⌘</span> + K
+                        </kbd>
+                    </Button>
                     {routes.map((route) => (
                         <Link
                             key={route.href}
