@@ -29,8 +29,8 @@ const Cv = () => {
                     <div className="w-full rounded-xl border focus-visible:ring-slate-200">
                         <div className="flex justify-between items-center">
                             <div className="flex items-center gap-x-5">
-                                <div className="p-7 bg-slate-100 rounded-l-xl">
-                                    <Paperclip className="h-5 w-5 text-slate-600" />
+                                <div className="p-7 bg-slate-100 dark:bg-background rounded-l-xl dark:border-r">
+                                    <Paperclip className="h-5 w-5 text-slate-600 dark:text-white" />
                                 </div>
                                 <div>
                                     <span className="font-bold">CV</span>

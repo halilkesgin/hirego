@@ -24,13 +24,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
-import { 
-    Select, 
-    SelectContent, 
-    SelectItem, 
-    SelectTrigger, 
-    SelectValue 
-} from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
 
 const Links = () => {
@@ -62,35 +55,35 @@ const Links = () => {
                 <CollapsibleContent>
                     <CardContent className="space-y-4">
                         <div>
-                            <div className="flex items-center gap-x-4 mb-2">
+                            <div className="flex items-center gap-x-2 mb-2">
                                 <Label>LinkedIn</Label>
                                 <Badge className="py-0.5" variant="outline">Optional</Badge>
                             </div>
                             <Input placeholder="Your Email" />
                         </div>
                         <div>
-                            <div className="flex items-center gap-x-4 mb-2">
+                            <div className="flex items-center gap-x-2 mb-2">
                                 <Label>Github</Label>
                                 <Badge className="py-0.5" variant="outline">Optional</Badge>
                             </div>
                             <Input placeholder="Your Email" />
                         </div>
                         <div>
-                            <div className="flex items-center gap-x-4 mb-2">
+                            <div className="flex items-center gap-x-2 mb-2">
                                 <Label>Behance</Label>
                                 <Badge className="py-0.5" variant="outline">Optional</Badge>
                             </div>
                             <Input placeholder="Your Email" />
                         </div>
                         <div>
-                            <div className="flex items-center gap-x-4 mb-2">
+                            <div className="flex items-center gap-x-2 mb-2">
                                 <Label>Portfolio</Label>
                                 <Badge className="py-0.5" variant="outline">Optional</Badge>
                             </div>
                             <Input placeholder="Your Email" />
                         </div>
                         <div>
-                            <div className="flex items-center gap-x-4 mb-2">
+                            <div className="flex items-center gap-x-2 mb-2">
                                 <Label>Personal website</Label>
                                 <Badge className="py-0.5" variant="outline">Optional</Badge>
                             </div>

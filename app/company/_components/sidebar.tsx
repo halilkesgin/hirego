@@ -21,15 +21,27 @@ const routes = [
         color: "text-blue-500"
     },
     {
-        label: "Messages",
+        label: "Jobs",
         icon: MessageSquare,
         href: "/candidate/messages",
         color: "text-blue-500"
     },
     {
-        label: "Profile",
+        label: "Candidates",
         icon: User,
         href: "/candidate/profile",
+        color: "text-blue-500"
+    },
+    {
+        label: "Talent Pool",
+        icon: Settings,
+        href: "/candidate/settings",
+        color: "text-blue-500"
+    },
+    {
+        label: "Messages",
+        icon: Settings,
+        href: "/candidate/settings",
         color: "text-blue-500"
     },
     {
@@ -40,7 +52,7 @@ const routes = [
     }
 ]
 
-const CandidateSidebar = () => {
+const Sidebar = () => {
     const pathname = usePathname()
 
     return (
@@ -118,4 +130,4 @@ const CandidateSidebar = () => {
     )
 }
 
-export default CandidateSidebar
+export default Sidebar

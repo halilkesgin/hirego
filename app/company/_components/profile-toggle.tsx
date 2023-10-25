@@ -24,7 +24,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-const CandidateProfileToggle = ({
+const ProfileToggle = ({
     className
 }: {
     className?: string
@@ -87,4 +87,4 @@ const CandidateProfileToggle = ({
     )
 }
 
-export default CandidateProfileToggle
+export default ProfileToggle

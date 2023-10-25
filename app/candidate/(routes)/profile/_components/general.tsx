@@ -55,7 +55,7 @@ const General = () => {
                                         fill
                                     />
                                 </div>
-                                <span className="absolute block rounded-full bg-blue-500 ring-4 ring-white dark:ring-background bottom-6 -right-2 h-4 w-4   md:h-6 md:w-6">
+                                <span className="absolute block rounded-full bg-blue-500 ring-4 ring-white dark:ring-background bottom-6 -right-2 h-4 w-4 md:h-6 md:w-6 ">
                                     <div className="flex justify-center">
                                         <Plus className="h-3 w-3 md:h-4 md:w-4 md:mt-[3.8px] mt-[2.5px] text-white" />
                                     </div>

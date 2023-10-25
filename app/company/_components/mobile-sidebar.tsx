@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
 import Sidebar from "./sidebar"
 
-const CandidateMobileSidebar = () => {
+const MobileSidebar = () => {
 
     const [isMounted, setIsMounted] = useState(false)
 
@@ -34,4 +34,4 @@ const CandidateMobileSidebar = () => {
     )
 }
 
-export default CandidateMobileSidebar
+export default MobileSidebar

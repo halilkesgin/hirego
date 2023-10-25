@@ -1,7 +1,7 @@
 import MobileSidebar from "./mobile-sidebar"
 import ProfileToggle from "./profile-toggle"
 
-const CandidateNavbar = () => {
+const Navbar = () => {
     return (
         <div className="flex bg-background items-center p-2 border-b">
             <MobileSidebar />
@@ -12,4 +12,4 @@ const CandidateNavbar = () => {
     )
 }
 
-export default CandidateNavbar
+export default Navbar
