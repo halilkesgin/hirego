@@ -1,45 +1,42 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Copy, Delete, Edit, Eye, Link, Linkedin, Megaphone, MoreHorizontal, PenSquare, Share, Trash, Twitter, View } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Copy, Eye, Link, Linkedin, Megaphone, MoreHorizontal, PenSquare, Share, Twitter } from "lucide-react"
+import Filter from "./filter"
+import Options from "./options"
 
-interface AllJobsProps {
-    className: string
-}
-
-const AllJobs = async ({className}: AllJobsProps) => {
-
+const AllJobsList = () => {
     return (
-        <Tabs defaultValue="all-jobs" className={className}>
-            <TabsList className="rounded-xl">
-                <TabsTrigger value="all-jobs" className="rounded-lg">All jobs</TabsTrigger>
-                <TabsTrigger value="drafts" className="rounded-lg">Drafts</TabsTrigger>
-            </TabsList>
-            <TabsContent value="all-jobs" className="mt-6">
-                <Card className="p-5">
-                    <div className="flex justify-between">
-                        <div className="flex flex-col">
-                            <div className="flex gap-x-2 items-center">
-                                <span className="text-lg">Test Engineer</span>
-                                <Badge className="py-0.5 px-3 bg-green-200 text-green-700" variant="destructive">Published</Badge>
-                            </div>
-                            <p className="text-muted-foreground">Izmir / Turkey</p>
+        <div>
+            <div className="flex justify-between">
+                <Filter />
+                <Options />
+            </div>
+            <CardHeader className="grid grid-cols-4 gap-x-4 pb-3">
+                <div className="font-medium">Sort by: <span className="font-normal">Title</span></div>
+                <div className="font-medium">Updated</div>
+                <div className="font-medium">Candidates</div>
+            </CardHeader>
+            <Card>
+                <CardHeader className="grid grid-cols-4 gap-x-4">
+                    <div className="flex flex-col gap-x-2">
+                        <div className="flex gap-x-4">
+                            <span className="text-md font-medium">Test Engineer</span>
+                            <Badge variant="outline" className="bg-green-200 text-green-600 px-4 !py-0 !text-xs font-medium">online</Badge>
                         </div>
-                        <div className="flex items-center justify-center text-muted-foreground">
-                            Oct 25, 2023
-                        </div>
-                        <div className="flex items-center justify-center text-muted-foreground">
-                            0
-                        </div>
-                        <div className="flex space-x-2 items-center justify-start">
-                            <Button variant="secondary" className="rounded-xl">
-                                <Megaphone className="h-4 w-4 mr-2" />
-                                Promote
-                            </Button>
-                            <DropdownMenu>
+                        <p className="text-muted-foreground text-sm">
+                            İzmir / Turkey  
+                        </p>
+                    </div>
+                    <div>Oct 25, 2023</div>
+                    <div>0</div>
+                    <div className="flex gap-x-2">
+                        <Button variant="outline" className="rounded-xl bg-indigo-100 text-indigo-500 border-indigo-100">
+                            <Megaphone className="h-4 w-4 mr-2 fill-indigo-500" />
+                            Promote
+                        </Button>
+                        <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
                                     <Button variant="outline" className="rounded-xl">
                                         <MoreHorizontal className="h-4 w-4" />
@@ -111,36 +108,11 @@ const AllJobs = async ({className}: AllJobsProps) => {
                                     </DropdownMenuGroup>
                                 </DropdownMenuContent>
                             </DropdownMenu>
-                        </div>
                     </div>
-                </Card>
-            </TabsContent>
-            <TabsContent value="drafts" className="mt-6">
-                <Card className="p-5">
-                    <div className="flex justify-between">
-                        <div className="flex flex-col">
-                            <div className="flex gap-x-2 items-center">
-                                <span className="text-lg">Test Engineer</span>
-                                <Badge className="py-0.5 px-3 bg-red-200 text-red-700" variant="destructive">Draft</Badge>
-                            </div>
-                            <p className="text-muted-foreground">Izmir / Turkey</p>
-                        </div>
-                        <div className="flex items-center justify-center text-muted-foreground">
-                            Oct 25, 2023
-                        </div>
-                        <div className="flex space-x-2 items-center justify-start">
-                            <Button variant="outline" size="icon" className="rounded-xl">
-                                <PenSquare className="h-4 w-4" />
-                            </Button>
-                            <Button variant="outline" size="icon" className="rounded-xl">
-                                <Trash className="h-4 w-4" />
-                            </Button>
-                        </div>
-                    </div>
-                </Card>
-            </TabsContent>
-        </Tabs>
+                </CardHeader>
+            </Card>
+        </div>
     )
 }
 
-export default AllJobs
+export default AllJobsList
