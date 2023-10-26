@@ -63,7 +63,7 @@ const AllJobs = async ({className}: AllJobsProps) => {
                                                 Online
                                             </DropdownMenuSubTrigger>
                                             <DropdownMenuPortal>
-                                                <DropdownMenuSubContent>
+                                                <DropdownMenuSubContent className="rounded-xl">
                                                     <DropdownMenuItem className="flex items-start flex-col gap-y-1 hover:bg-sky-200 rounded-lg">
                                                         <span>Online</span>
                                                         <span className="text-xs">Job published, open for applications with<br/>candidate management.</span>

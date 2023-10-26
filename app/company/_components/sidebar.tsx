@@ -43,7 +43,7 @@ const routes = [
     {
         label: "Talent Pool",
         icon: Inbox,
-        href: "/company/settings",
+        href: "/company/talents",
         color: "text-blue-500"
     },
     {
@@ -55,7 +55,7 @@ const routes = [
     {
         label: "Settings",
         icon: Settings,
-        href: "/company/settings",
+        href: "/company/details",
         color: "text-blue-500"
     }
 ]
