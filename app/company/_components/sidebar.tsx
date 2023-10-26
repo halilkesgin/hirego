@@ -7,17 +7,20 @@ import {
     MessageSquare, 
     Search, 
     Settings, 
-    User, 
     UserSquare2
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { 
+    Dialog, 
+    DialogContent, 
+    DialogHeader, 
+    DialogTitle, 
+    DialogTrigger 
+} from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Input } from "@/components/ui/input"
-import { SearchCommand } from "./search-command"
 import { useSearch } from "@/hooks/use-search"
 import { Button } from "@/components/ui/button"
 
@@ -67,23 +70,26 @@ const Sidebar = () => {
     return (
         <div className="space-y-4 py-4 flex flex-col h-full bg-white dark:bg-[#020817] text-white border-r ">
             <div className="overflow-y-auto scroll-smooth px-3 py-2 flex-1">
-                <Link href="/dashboard" className="flex items-center pl-3 mt-1 mb-14">
+                <Link href="/company/" className="flex items-center pl-3 mt-1 mb-14">
                     <div className="flex flex-col space-y-1">
-                        <div className="flex flex-row justify-center items-center gap-x-2">
+                        <div className="flex flex-col justify-center items-start gap-x-2">
                             <h1 className="text-4xl font-bold text-black dark:text-white">
                                 hirego
                             </h1>
+                            <span className="text-black text-xs text-muted-foreground/50 font-semibold">
+                                all for one
+                            </span>
                         </div>
                     </div>
                 </Link>
                 <div className="space-y-1">
-                    <Button variant="outline" onClick={search.onOpen} className="w-full mb-12 justify-between flex gap-x-2">
-                        <div className="flex gap-x-3 text-muted-foreground">
+                    <Button variant="outline" onClick={search.onOpen} className="w-full rounded-xl mb-12 justify-between flex gap-x-2">
+                        <div className="flex gap-x-3 text-black dark:text-white">
                             <Search className="h-5 w-5" />
                             Search
                         </div>
-                        <kbd className="ml-auto pinter-events-none inline-flex select-none items-center gap-1 rounded py-1 border bg-muted px-1.5 font-mono text-xs font-medium dark:bg-background text-muted-foreground opacity-100">
-                            <span className="text-xs">⌘</span> + K
+                        <kbd className="ml-auto pinter-events-none inline-flex justify-center select-none items-center gap-1 rounded-lg py-1 border bg-transparent border-input  px-1.5 font-mono text-xs font-medium dark:bg-background text-muted-foreground opacity-100">
+                            <span className="text-[10px] text-black dark:text-white">⌘ + K</span>
                         </kbd>
                     </Button>
                     {routes.map((route) => (
@@ -91,16 +97,15 @@ const Sidebar = () => {
                             key={route.href}
                             href={route.href}
                             className={cn(
-                                "group flex p-3 w-full text-sm justify-start font-semibold cursor-pointer hover:bg-blue-100 hover:dark:bg-muted rounded-lg transition",
-                                pathname === route.href ? "text-blue-600 dark:text-white" : "text-blue-600",
-                                pathname === route.href ? "bg-blue-100 dark:bg-muted hover:bg-blue-100" : "hover:text-blue-600",
-                                pathname !== route.href ? "text-muted-foreground hover:text-muted-foreground/60 dark:hover:text-white" : ""
+                                "group flex p-2 w-full text-sm justify-start font-medium cursor-pointer hover:bg-indigo-50 hover:dark:bg-muted rounded-lg transition",
+                                pathname === route.href ? "text-indigo-500 dark:text-white" : "",
+                                pathname === route.href ? "bg-indigo-50 dark:bg-muted" : "",
+                                pathname !== route.href ? "text-black dark:text-white dark:hover:text-white" : ""
                             )}
                         >
                             <div className="flex items-center flex-1 ">
                                 <route.icon className={cn(
                                     "h-5 w-5 mr-3",
-                                    pathname !== route.href ? "text-muted-foreground" : "",
                                 )} />
                                 {route.label}
                             </div>
@@ -110,7 +115,7 @@ const Sidebar = () => {
                 <div className="fixed flex flex-col justify-center items-start bottom-0 py-5 px-3">
                     <Dialog>
                         <DialogTrigger>
-                            <span className="text-black dark:text-white text-sm">Privacy</span>
+                            <span className="text-muted-foreground dark:text-white text-xs">Privacy</span>
                         </DialogTrigger>
                         <DialogContent className="!max-w-[1250px]">
                             <DialogHeader>
@@ -127,7 +132,7 @@ const Sidebar = () => {
                     </Dialog>
                     <Dialog>
                         <DialogTrigger>
-                            <span className="text-black dark:text-white text-sm">Terms & Conditions</span>
+                            <span className="text-muted-foreground dark:text-white text-xs">Terms & Conditions</span>
                         </DialogTrigger>
                         <DialogContent className="!max-w-[1250px]">
                             <DialogHeader>

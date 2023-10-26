@@ -9,10 +9,10 @@ const Heading = ({
 }: HeadingProps) => {
     return (
         <div>
-            <h4 className="text-3xl font-bold">
+            <h4 className="text-4xl font-bold">
                 {title}
             </h4>
-            <h6 className="text-md text-muted-foreground/60 font-semibold">
+            <h6 className="text-sm text-muted-foreground/50 font-medium">
                 {subtitle}
             </h6>
         </div>

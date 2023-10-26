@@ -19,7 +19,7 @@ const CompanyPage = () => {
                         <CardTitle className="text-lg">
                             Six steps to get started
                         </CardTitle>
-                        <CardDescription className="text-muted-foreground">
+                        <CardDescription className="text-sm !mt-0">
                             Take these easy steps to hire even faster with hirego
                         </CardDescription>
                         <div className="grid grid-cols-6 gap-x-2 !mt-5">
@@ -63,7 +63,7 @@ const CompanyPage = () => {
                         <CardTitle className="text-lg">
                             How it works
                         </CardTitle>
-                        <CardDescription className="text-muted-foreground">
+                        <CardDescription className="text-sm !mt-0">
                             This is the helper of hirego
                         </CardDescription>
                     </CardHeader>
