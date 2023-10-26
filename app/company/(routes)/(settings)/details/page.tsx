@@ -9,7 +9,7 @@ import Image from "next/image"
 
 const SettingsDetailsPage = () => {
     return (
-        <Card className="w">
+        <Card className="w-full">
             <CardHeader>
                 <div className="flex justify-between items-center gap-x-2">
                     <CardTitle className="font-semibold">

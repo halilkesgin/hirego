@@ -72,14 +72,14 @@ const Sidebar = () => {
     }
 
     return (
-        <Card className="w-[500px] max-h-[365px] rounded-xl">
+        <Card className="w-[275px] max-h-[365px] rounded-xl">
             <CardContent className="mt-6">
                 {routes.map((route) => (
                         <Link
                             key={route.href}
                             href={route.href}
                             className={cn(
-                                "group flex p-3 w-full text-xs justify-start font-semibold cursor-pointer hover:bg-blue-100 hover:dark:bg-muted rounded-lg transition",
+                                "group flex p-1.5 w-full mb-1 text-xs justify-start font-semibold cursor-pointer hover:bg-blue-100 hover:dark:bg-muted rounded-lg transition",
                                 pathname === route.href ? "text-blue-600 dark:text-white" : "text-blue-600",
                                 pathname === route.href ? "bg-blue-100 dark:bg-muted hover:bg-blue-100" : "hover:text-blue-600",
                                 pathname !== route.href ? "text-muted-foreground hover:text-muted-foreground/60 dark:hover:text-white" : ""
