@@ -78,7 +78,7 @@ const Sidebar = () => {
                 </Link>
                 <div className="space-y-1">
                     <Button variant="outline" onClick={search.onOpen} className="w-full mb-12 justify-between flex gap-x-2">
-                        <div className="flex gap-x-3">
+                        <div className="flex gap-x-3 text-muted-foreground">
                             <Search className="h-5 w-5" />
                             Search
                         </div>
