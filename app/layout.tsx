@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from '@/components/providers/theme-provider'
+import AuthProvider from '@/components/providers/auth-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +18,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <ClerkProvider>
+        <AuthProvider>
             <html lang="en">
                 <body className={inter.className}>
                     <ThemeProvider
@@ -30,6 +31,6 @@ export default function RootLayout({
                     </ThemeProvider>
                 </body>
             </html>
-        </ClerkProvider>
+        </AuthProvider>
     )
 }

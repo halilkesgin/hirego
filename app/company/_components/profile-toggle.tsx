@@ -8,7 +8,6 @@ import {
     User
 } from "lucide-react"
 import { useTheme } from "next-themes"
-import { useClerk } from "@clerk/clerk-react"
 import { useRouter } from "next/navigation"
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
@@ -23,6 +22,7 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { signOut } from "next-auth/react"
 
 const ProfileToggle = ({
     className
@@ -32,7 +32,6 @@ const ProfileToggle = ({
 
     const { setTheme } = useTheme()
     const router = useRouter()
-    const { signOut } = useClerk()
 
     return (
         <div className={className}>
@@ -77,7 +76,7 @@ const ProfileToggle = ({
                         Settings
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer" onClick={() => signOut(() => router.push("/"))}>
+                    <DropdownMenuItem className="cursor-pointer" onClick={() => {}}>
                         <LogOut className="h-4 w-4 mr-2"  />
                         Sign out
                     </DropdownMenuItem>
