@@ -1,7 +1,25 @@
+import getCurrentCandidate from "@/actions/candidate/get-current-candidate"
 import { Card, CardContent } from "@/components/ui/card"
-import { DataTableDemo } from "../_components/table/test"
+import { db } from "@/lib/db"
 
-const CandidatePage = () => {
+interface CandidateIdPageProps {
+    params: {
+        candidateId: string
+    }
+}
+
+const CandidateIdPage = async ({
+    params
+}: CandidateIdPageProps) => {
+
+    const candidate = await getCurrentCandidate()
+
+    const candidateName = await db.candidate.findUnique({
+        where: {
+            id: candidate?.id
+        }
+    })
+
     return (
         <div className="container mt-10">
             <div className="text-4xl !mb-10 font-semibold">
@@ -9,11 +27,11 @@ const CandidatePage = () => {
             </div>
             <Card>
                 <CardContent>
-                    <DataTableDemo />
+                    Hello sir = {candidateName?.email}
                 </CardContent>
             </Card>
         </div>
     )
 }
 
-export default CandidatePage
+export default CandidateIdPage

@@ -2,7 +2,7 @@ import Cv from "./_components/cv"
 import General from "./_components/general"
 import Links from "./_components/links"
 
-const CandidateProfilePage = () => {
+const ProfilePage = () => {
     return (
         <div className="container mt-10">
             <div className="flex flex-col gap-y-5">
@@ -20,4 +20,4 @@ const CandidateProfilePage = () => {
     )
 }
 
-export default CandidateProfilePage
+export default ProfilePage

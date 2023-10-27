@@ -1,5 +1,10 @@
 "use client"
 
+import * as z from "zod"
+import axios from "axios"
+import { useState } from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+
 import { 
     Edit, 
     Mail, 
@@ -30,8 +35,52 @@ import {
     SelectValue 
 } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import { useForm } from "react-hook-form"
+import { Candidate } from "@prisma/client"
+import { useParams, useRouter } from "next/navigation"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 
-const General = () => {
+const formSchema = z.object({
+    name: z.string(),
+})
+
+type GeneralFormValues = z.infer<typeof formSchema>
+
+interface GeneralProps {
+    data: Candidate | null
+}
+
+const General = ({ data }: GeneralProps) => {
+
+    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
+    const params = useParams()
+
+    const form = useForm<GeneralFormValues>({
+        resolver: zodResolver(formSchema),
+        defaultValues: data || {
+            name: "",
+        }
+    })
+
+    const onSubmit = async (data: GeneralFormValues) => {
+        try {
+            setIsLoading(true)
+
+            if (data) {
+                await axios.patch(`/api/candidate`, data)
+            } else {
+                await axios.post(`/api/candidate`, data)
+            }
+            router.refresh()
+            console.log("successfull")
+        } catch (error: any) {
+            console.log("something went wrong")
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     return (
         <Card className="rounded-xl">
             <Collapsible>
@@ -89,49 +138,38 @@ const General = () => {
                 </CardContent>
                 <CollapsibleContent>
                     <CardContent className="space-y-4">
-                        <div>
-                            <Label>Email *</Label>
-                            <Input placeholder="Your Email" />
-                        </div>
-                        <div className="grid grid-cols-2 gap-x-4 w-full">
-                            <div>
-                                <Label>Name *</Label>
-                                <Input placeholder="Your Name" />
-                            </div>
-                            <div>
-                                <Label>Surname *</Label>
-                                <Input placeholder="Your Surname" />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-x-4 w-full">
-                            <div>
-                                <Label>Country *</Label>
-                                <Select>
-                                    <SelectTrigger>
-                                        <SelectValue placeholder="Turkey" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="tr">Turkey</SelectItem>
-                                        <SelectItem value="us">United States</SelectItem>
-                                        <SelectItem value="fr">France</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                            <div>
-                                <Label>Phone *</Label>
-                                <Input placeholder="Your Phone" />
-                            </div>
-                        </div>
-                        <div className="flex gap-x-3 justify-end">
-                            <CollapsibleTrigger asChild>
-                                <Button variant="outline">
-                                    Cancel
-                                </Button>
-                            </CollapsibleTrigger>
-                            <Button disabled variant="secondary">
-                                Save changes
-                            </Button>
-                        </div>
+                        <Form {...form}>
+                            <form onSubmit={form.handleSubmit(onSubmit)}>
+                                <div className="md:grid md:grid-cols-3 gap-8">
+                                    <FormField 
+                                        control={form.control}
+                                        name="name"
+                                        render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel>
+                                                    Name
+                                                </FormLabel>
+                                                <FormControl>
+                                                    <Input disabled={isLoading} placeholder="Category name" {...field} />
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="flex gap-x-3 justify-end">
+                                    <CollapsibleTrigger asChild>
+                                        <Button variant="outline">
+                                            Cancel
+                                        </Button>
+                                    </CollapsibleTrigger>
+                                    <Button disabled={isLoading} variant="secondary" type="submit">
+                                        Save changes
+                                    </Button>
+                                </div>
+                            </form>
+                        </Form>
+                        
                     </CardContent>
                 </CollapsibleContent>
             </Collapsible>

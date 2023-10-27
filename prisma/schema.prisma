@@ -10,8 +10,11 @@ datasource db {
 model Candidate {
     id             String    @id @default(auto()) @map("_id") @db.ObjectId
     name           String
+    surname        String?
+    country        String
     image          String?
     email          String?   @unique
+    phone          String?   @unique
     emailVerified  DateTime?
     hashedPassword String?
     createdAt      DateTime  @default(now())
@@ -19,6 +22,7 @@ model Candidate {
     sessions       Session[]
     accounts       Account[]
     jobs           Job[]
+    socials        Social[]
 }
 
 model Company {
@@ -85,5 +89,14 @@ model Job {
     Company     Company?   @relation(fields: [companyId], references: [id])
     companyId   String?    @db.ObjectId
     Candidate   Candidate? @relation(fields: [candidateId], references: [id])
+    candidateId String?    @db.ObjectId
+}
+
+model Social {
+    id   String  @id @default(auto()) @map("_id") @db.ObjectId
+    name String
+    link String?
+
+    candidate   Candidate? @relation(fields: [candidateId], references: [id])
     candidateId String?    @db.ObjectId
 }
