@@ -22,6 +22,7 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { signOut } from "next-auth/react"
 
 const CandidateProfileToggle = ({
     className
@@ -75,7 +76,7 @@ const CandidateProfileToggle = ({
                         Settings
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="cursor-pointer" onClick={() => {}}>
+                    <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()}>
                         <LogOut className="h-4 w-4 mr-2"  />
                         Sign out
                     </DropdownMenuItem>
