@@ -15,7 +15,7 @@ export async function POST(
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const candidate = await db.candidate.create({
+    const company = await db.company.create({
         data: {
             email,
             name,
@@ -23,5 +23,5 @@ export async function POST(
         }
     });
 
-    return NextResponse.json(candidate);
+    return NextResponse.json(company);
 }
