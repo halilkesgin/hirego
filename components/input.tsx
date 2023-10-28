@@ -11,6 +11,7 @@ import {
 interface InputProps {
     label: string
     id: string
+    className?: string
     type?: string
     required?: boolean
     register: UseFormRegister<FieldValues>
@@ -23,13 +24,14 @@ const Input: React.FC<InputProps> = ({
     id,
     register,
     required,
+    className,
     errors,
     type = "text",
     disabled,
 }) => {
     return ( 
         <div>
-            <label htmlFor={id} className="block text-sm font-medium leading-6 mb-1 text-gray-900">
+            <label htmlFor={id} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 {label}
             </label>
             <div className="">
@@ -40,7 +42,8 @@ const Input: React.FC<InputProps> = ({
                     disabled={disabled}
                     {...register(id, { required })}
                     className={cn(
-                        "block w-full rounded-md border-0 py-1.5 px-3 shadow-sm ring-1 ring-slate-500 placeholder:text-gray-400 sm:text-sm sm:leading-6",
+                        "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+                        className,
                         errors[id] && "focus:ring-rose-500",
                         disabled && "opacity-50 cursor-default"
                     )}

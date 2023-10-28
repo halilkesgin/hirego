@@ -1,4 +1,3 @@
-
 import getCurrentCandidate from "@/actions/candidate/get-current-candidate"
 import { Card, CardContent } from "@/components/ui/card"
 import { db } from "@/lib/db"

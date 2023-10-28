@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/providers/theme-provider'
 import AuthProvider from '@/components/providers/auth-provider'
 import { Toaster } from '@/components/ui/toaster'
+import { ModalProvider } from '@/components/providers/modal-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,6 +29,7 @@ export default function RootLayout({
                         disableTransitionOnChange
                     >
                         <Toaster />
+                        <ModalProvider />
                         {children}
                     </ThemeProvider>
                 </body>
