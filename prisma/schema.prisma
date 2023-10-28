@@ -9,34 +9,20 @@ datasource db {
 
 model Candidate {
     id             String    @id @default(auto()) @map("_id") @db.ObjectId
-    name           String
+    name           String?
     surname        String?
-    country        String
+    country        String?
+    state          String?
     image          String?
+    phone          String?
     email          String?   @unique
-    phone          String?   @unique
     emailVerified  DateTime?
     hashedPassword String?
     createdAt      DateTime  @default(now())
     updatedAt      DateTime  @updatedAt
-    sessions       Session[]
-    accounts       Account[]
-    jobs           Job[]
-    socials        Social[]
-}
 
-model Company {
-    id             String    @id @default(auto()) @map("_id") @db.ObjectId
-    name           String
-    image          String?
-    email          String?   @unique
-    emailVerified  DateTime?
-    hashedPassword String?
-    createdAt      DateTime  @default(now())
-    updatedAt      DateTime  @updatedAt
-    sessions       Session[]
-    accounts       Account[]
-    jobs           Job[]
+    sessions Session[]
+    accounts Account[]
 }
 
 model Account {
@@ -55,9 +41,6 @@ model Account {
     candidateId String    @db.ObjectId
     candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
 
-    companyId String  @db.ObjectId
-    company   Company @relation(fields: [companyId], references: [id], onDelete: Cascade)
-
     @@unique([provider, providerAccountId])
 }
 
@@ -68,9 +51,6 @@ model Session {
 
     candidateId String?    @db.ObjectId
     candidate   Candidate? @relation(fields: [candidateId], references: [id], onDelete: Cascade)
-
-    companyId String?  @db.ObjectId
-    company   Company? @relation(fields: [companyId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
@@ -80,23 +60,4 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
-}
-
-model Job {
-    id          String     @id @default(auto()) @map("_id") @db.ObjectId
-    name        String
-    description String
-    Company     Company?   @relation(fields: [companyId], references: [id])
-    companyId   String?    @db.ObjectId
-    Candidate   Candidate? @relation(fields: [candidateId], references: [id])
-    candidateId String?    @db.ObjectId
-}
-
-model Social {
-    id   String  @id @default(auto()) @map("_id") @db.ObjectId
-    name String
-    link String?
-
-    candidate   Candidate? @relation(fields: [candidateId], references: [id])
-    candidateId String?    @db.ObjectId
 }

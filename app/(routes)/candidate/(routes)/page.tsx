@@ -1,24 +1,11 @@
+"use client"
+
 import getCurrentCandidate from "@/actions/candidate/get-current-candidate"
 import { Card, CardContent } from "@/components/ui/card"
 import { db } from "@/lib/db"
 
-interface CandidateIdPageProps {
-    params: {
-        candidateId: string
-    }
-}
-
-const CandidateIdPage = async ({
-    params
-}: CandidateIdPageProps) => {
-
-    const candidate = await getCurrentCandidate()
-
-    const candidateName = await db.candidate.findUnique({
-        where: {
-            id: candidate?.id
-        }
-    })
+const CandidateIdPage =  ({
+}) => {
 
     return (
         <div className="container mt-10">
@@ -27,7 +14,7 @@ const CandidateIdPage = async ({
             </div>
             <Card>
                 <CardContent>
-                    Hello sir = {candidateName?.email}
+                    Hello sir = 
                 </CardContent>
             </Card>
         </div>
