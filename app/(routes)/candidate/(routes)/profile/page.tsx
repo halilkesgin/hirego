@@ -4,10 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Edit, Mail, MapPin, Phone, Plus } from "lucide-react"
 import Image from "next/image"
 import { useProfileModal } from "@/hooks/use-profile-modal"
+import { useProfileImageModal } from "@/hooks/use-profile-image-modal"
 
 const ProfilePage = () => {
 
     const profileModal = useProfileModal()
+    const profileImageModal = useProfileImageModal()
 
     return (
         <div className="container mt-10">
@@ -38,7 +40,7 @@ const ProfilePage = () => {
                                                 fill
                                             />
                                         </div>
-                                        <span className="absolute block rounded-full bg-blue-500 ring-4 ring-white dark:ring-background         bottom-6 -right-2 h-4 w-4 md:h-6 md:w-6 ">
+                                        <span onClick={profileImageModal.onOpen} className="absolute cursor-pointer block rounded-full bg-blue-500 hover:bg-blue-600 transition-all ring-4 ring-white dark:ring-background bottom-6 -right-2 h-4 w-4 md:h-6 md:w-6 ">
                                             <div className="flex justify-center">
                                                 <Plus className="h-3 w-3 md:h-4 md:w-4 md:mt-[3.8px] mt-[2.5px] text-white" />
                                             </div>
