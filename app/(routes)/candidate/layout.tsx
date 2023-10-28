@@ -4,6 +4,7 @@ import Sidebar from "./_components/sidebar"
 import Navbar from "./_components/navbar"
 import { getAuthSession } from "@/lib/auth"
 import { redirect } from "next/navigation"
+import AuthProvider from "@/components/providers/auth-provider"
 
 const CandidateLayout = async ({
     children

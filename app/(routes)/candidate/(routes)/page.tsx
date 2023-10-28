@@ -1,11 +1,14 @@
-"use client"
 
 import getCurrentCandidate from "@/actions/candidate/get-current-candidate"
 import { Card, CardContent } from "@/components/ui/card"
 import { db } from "@/lib/db"
+import { getServerSession } from "next-auth/next"
 
-const CandidateIdPage =  ({
+const CandidateIdPage =  async ({
 }) => {
+
+    const session = await getServerSession();
+
 
     return (
         <div className="container mt-10">
@@ -14,7 +17,7 @@ const CandidateIdPage =  ({
             </div>
             <Card>
                 <CardContent>
-                    Hello sir = 
+                    Hello sir = {session?.user?.name}
                 </CardContent>
             </Card>
         </div>
